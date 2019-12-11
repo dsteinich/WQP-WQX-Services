@@ -11,11 +11,7 @@ public class WqpExceptionTest {
 
 	public static class Klass {
 		public void doSomething() throws WqpException {
-			try {
-				int div = 1/ 0;
-			} catch (Exception e) {
-				throw new WqpException(WqpExceptionId.URL_PARSING_EXCEPTION, Klass.class, "doSomething", "div by zero");
-			}
+			throw new WqpException(WqpExceptionId.URL_PARSING_EXCEPTION, Klass.class, "doSomething", "div by zero");
 		}
 	}
 

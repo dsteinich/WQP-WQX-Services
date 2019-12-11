@@ -74,7 +74,7 @@ public class ActivityMetricController extends BaseController {
 		doHeadRequest(request, response, filter, mimeType, zip);
 	}
 
-	@Operation(description="Return requested data.")
+	@Operation(description="Return requested data.", tags={SwaggerConfig.ACTIVITY_METRIC_TAG_NAME})
 	@FullParameterList
 	@GetMapping(value=HttpConstants.ACTIVITY_METRIC_SEARCH_ENDPOINT)
 	public void activityMetricGetRequest(HttpServletRequest request, HttpServletResponse response, FilterParameters filter) {

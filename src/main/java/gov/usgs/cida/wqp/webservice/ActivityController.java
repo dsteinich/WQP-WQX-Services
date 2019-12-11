@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import gov.usgs.cida.wqp.dao.intfc.ICountDao;
 import gov.usgs.cida.wqp.dao.intfc.IStreamingDao;
 import gov.usgs.cida.wqp.mapping.Profile;
@@ -35,6 +36,8 @@ import gov.usgs.cida.wqp.swagger.annotation.ProfileParameterActivity;
 import gov.usgs.cida.wqp.swagger.model.ActivityCountJson;
 import gov.usgs.cida.wqp.util.HttpConstants;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -66,7 +69,17 @@ public class ActivityController extends BaseController {
 		doHeadRequest(request, response, filter);
 	}
 
-	@Operation(description="Return requested data.")
+	@Operation(description="Return requested data.",
+			parameters={
+					@Parameter(
+							name="analyticalmethod",
+							description="One or more Analytical Methods.",
+							in=ParameterIn.QUERY,
+							array=@ArraySchema(schema=@Schema(implementation=String.class)),
+							required=false
+							)
+			}
+			)
 	@FullParameterList
 	@ProfileParameterActivity
 	@GetMapping()
@@ -85,7 +98,6 @@ public class ActivityController extends BaseController {
 	}
 
 	@Operation(description="Same as the JSON consumer, but hidden from swagger", hidden=true)
-	@ProfileParameterActivity
 	@PostMapping(consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public void activityFormUrlencodedPostRequest(HttpServletRequest request, HttpServletResponse response, FilterParameters filter) {
 		doDataRequest(request, response, filter);
