@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.usgs.wma.wqp.openapi.model.SummaryYears;
 import gov.usgs.wma.wqp.service.ConfigurationService;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -81,13 +82,19 @@ public class ConfigOpenApi {
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI()
 				.addServersItem(new Server().url(configurationService.getSiteUrlBase()))
-				.components(new Components())
+				.components(getComponents())
 				.info(new Info()
 						.title("Water Quality Portal Data API")
 						.description("Documentation for the Water Quality Portal Data Download API")
 						.version(configurationService.getAppVersion())
 						);
 
+	}
+
+	public Components getComponents() {
+		Components rtn = new Components();
+		rtn.addSchemas("testy", SummaryYears.getIt());
+		return rtn;
 	}
 //	@Bean
 //	public Docket qwPortalServicesApi() {

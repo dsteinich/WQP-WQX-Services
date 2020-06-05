@@ -235,17 +235,6 @@ public class SwaggerParameters {
 //				.build();
 //	}
 //
-//	public static Parameter organization() {
-//		return new ParameterBuilder()
-//				.name("organization")
-//				.description("One or more case-sensitive Organization Identifiers.")
-//				.modelRef(new ModelRef("", new ModelRef("string")))
-//				.parameterType("query")
-//				.required(false)
-//				.allowMultiple(true)
-//				.build();
-//	}
-//
 //	public static Parameter pCode() {
 //		return new ParameterBuilder()
 //				.name("pCode")
@@ -374,18 +363,7 @@ public class SwaggerParameters {
 //				.allowMultiple(true)
 //				.build();
 //	}
-//	
-//	public static Parameter summaryYears() {
-//		return new ParameterBuilder()
-//				.name("summaryYears")
-//				.description("Select summary data for 1, 5, or all years. If no summary year is selected, all years is returned by default.")
-//				.modelRef(new ModelRef("string"))
-//				.parameterType("query")
-//				.required(false)
-//				.allowableValues(new AllowableListValues(Arrays.asList("1", "5", "all"), "LIST"))
-//				.build();
-//	}
-//
+
 //	public static Parameter within() {
 //		return new ParameterBuilder()
 //				.name("within")

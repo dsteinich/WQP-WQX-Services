@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import gov.usgs.wma.wqp.openapi.annotation.FullParameterList;
 import gov.usgs.wma.wqp.openapi.annotation.ProfileParameterActivity;
 import gov.usgs.wma.wqp.openapi.annotation.ProfileParameterSummary;
-import gov.usgs.wma.wqp.openapi.annotation.ProfileParameterSummaryOrganization;
+import gov.usgs.wma.wqp.openapi.annotation.SummaryOrganizationFilterParameters;
 //import springfox.documentation.service.Parameter;
 //import springfox.documentation.spi.DocumentationType;
 //import springfox.documentation.spi.service.OperationBuilderPlugin;
@@ -98,11 +98,6 @@ public class SwaggerParameterBuilder { // implements OperationBuilderPlugin {
 //			parameters.add(SwaggerParameters.summaryYears());
 //			parameters.add(SwaggerParameters.within());
 //			parameters.add(SwaggerParameters.dataProfilePeriodOfRecord());
-//		}
-//		
-//		if (profileParameterSummaryOrganization.isPresent()) {
-//			parameters.add(SwaggerParameters.summaryYears());
-//			parameters.add(SwaggerParameters.organization());
 //		}
 //
 //		if (postMapping.isPresent()) {
